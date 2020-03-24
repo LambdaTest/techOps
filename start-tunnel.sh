@@ -1,4 +1,5 @@
 #chmod 755 start-tunnel.sh
+#set LT_USERNAME and LT_ACCESS_KEY values
 #To Start Tunnel using fresh binary download on current directory or use specified location
 
 
@@ -21,20 +22,20 @@ if [ -z "$1" ]; then
 		echo "Downloading Latest Tunnel binary for Mac OS"
 		$($curl_or_wget "https://downloads.lambdatest.com/binary/mac/LT") 
 		chmod +x LT
-		./LT  -user LT_USERNAME -key LT_ACCESS_KEY -v
+		./LT  -user $LT_USERNAME -key $LT_ACCESS_KEY -v
 		sleep 30
 	elif [ "$(uname)" = "Linux" ]; then
 	    echo "Downloading Latest Tunnel binary for Linux"
 	    $($curl_or_wget "https://downloads.lambdatest.com/binary/linux/LT") 
 		chmod +x LT
-		./LT  -user LT_USERNAME -key LT_ACCESS_KEY -v
+		./LT  -user $LT_USERNAME -key $LT_ACCESS_KEY -v
 		sleep 30
 	fi
 else
 	echo "Tunnel Binary Path supplied "
 	echo $1
 	chmod +x $1
-	$1 -user LT_USERNAME -key LT_ACCESS_KEY -v
+	$1 -user $LT_USERNAME -key $LT_ACCESS_KEY -v
 	sleep 30
 fi
 exit 0
