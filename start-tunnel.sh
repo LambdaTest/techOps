@@ -21,7 +21,7 @@ if [ -z "$1" ]; then
 		chmod +x LT
 		./LT  -user LT_USERNAME -key LT_ACCESS_KEY -v
 		sleep 30
-	elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+	elif [ "$(uname)" == "Linux" ]; then
 	    echo "Downloading Latest Tunnel binary for Linux"
 	    $($curl_or_wget "https://downloads.lambdatest.com/tunnel/linux/64bit/LT_Linux.zip") 
 		unzip LT_Linux.zip
