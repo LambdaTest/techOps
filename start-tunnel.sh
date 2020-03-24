@@ -13,18 +13,19 @@ if [ -z "$1" ]; then
 	fi
 	echo $curl_or_wget
   	
+  	#Remove Old Binary file if have
+  	rm -rf LT
+  	rm -rf LT*
 	# Check OS Type
-	if [ "$(uname)" == "Darwin" ]; then
+	if [ "$(uname)" = "Darwin" ]; then
 		echo "Downloading Latest Tunnel binary for Mac OS"
-		$($curl_or_wget "https://downloads.lambdatest.com/tunnel/mac/64bit/LT_Mac.zip") 
-		unzip LT_Mac.zip
+		$($curl_or_wget "https://downloads.lambdatest.com/binary/mac/LT") 
 		chmod +x LT
 		./LT  -user LT_USERNAME -key LT_ACCESS_KEY -v
 		sleep 30
-	elif [ "$(uname)" == "Linux" ]; then
+	elif [ "$(uname)" = "Linux" ]; then
 	    echo "Downloading Latest Tunnel binary for Linux"
-	    $($curl_or_wget "https://downloads.lambdatest.com/tunnel/linux/64bit/LT_Linux.zip") 
-		unzip LT_Linux.zip
+	    $($curl_or_wget "https://downloads.lambdatest.com/binary/linux/LT") 
 		chmod +x LT
 		./LT  -user LT_USERNAME -key LT_ACCESS_KEY -v
 		sleep 30
