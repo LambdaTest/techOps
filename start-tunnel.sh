@@ -32,6 +32,7 @@ if [ -z "$1" ]; then
 else
 	echo "Tunnel Binary Path supplied "
 	echo $1
+	chmod +x $1
 	$1 -user LT_USERNAME -key LT_ACCESS_KEY -v
 	sleep 30
 fi
